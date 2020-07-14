@@ -1,0 +1,44 @@
+﻿@model List<Talep>
+@{
+    ViewBag.Title = "Talep";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="panel">
+    <div class="panel-body">
+        <div class="adv-table editable-table " style="margin-top:50px">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Talep ID</th>                       
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Belge</th>
+                        <th>Açıklama</th>
+                        <th>Talep Tarihi</th>
+                        <th>Değerlendir</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>                         
+                            <td>@item.Adi</td>
+                            <td>@item.Soyadi</td>
+                            <td>@item.Belge</td>
+                            <td>@item.Yorum</td>
+                            <td>@item.TalepTarihi.ToShortDateString()</td>
+                            <td> @Html.ActionLink("Talep Degerlendir", "TalepDegerlendir", new { id = item.Id }, new { @class = "btn btn-success" })</td>
+                            <td> @Html.ActionLink("Talep Sil", "TalepSil", new { id = item.Id, ad = item.Adi}, new { @class = "btn btn-danger TalepSil" })</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</section>
+
+

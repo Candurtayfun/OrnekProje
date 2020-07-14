@@ -1,0 +1,79 @@
+﻿@model Talep
+@{
+    ViewBag.Title = "Talep Ekle";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    *[role="form"] {
+        max-width: 530px;
+        padding: 15px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 0.3em;
+    }
+
+        *[role="form"] h2 {
+            margin-left: 5em;
+            margin-bottom: 1em;
+        }
+</style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container">
+
+    <h2>Talep Ekleme Formu</h2>
+    @using (Html.BeginForm("TalepEkle", "Home", FormMethod.Post, new { id = "sign_up" }))
+    {
+        <div class="form-group">
+            <label for="adi" class="col-sm-3 control-label">Adı</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(a => a.Adi, new { @class = "form-control", placeholder = "Ad", required = "required", autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="soyadi" class="col-sm-3 control-label">Soyadı</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(a => a.Soyadi, new { @class = "form-control", placeholder = "Soyad", required = "required" })
+            </div>
+        </div>
+        //Belge Ekleme
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Belge</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(a => a.Belge, new { @class = "form-control", placeholder = "Belge", required = "required", type = "file" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefon" class="col-sm-3 control-label">Açıklama</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(a => a.Yorum, new { @class = "form-control", placeholder = "Açıklama", required = "required", type = "tel" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="adres" class="col-sm-3 control-label">Talep Tarihi</label>
+            <div class="col-sm-9">
+                @Html.EditorFor(a => a.TalepTarihi, new { htmlAttributes = new { @class = "form-control", required = "required", type="date" } })
+            </div>
+        </div>
+      
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block">Talep Ekle</button>
+            </div>
+            <div class="m-t-25 m-b--5 align-center">
+                @Html.ActionLink("Taleplerim", "Talep")
+            </div>
+        </div>
+    }
+    <!-- /form -->
+</div> <!-- ./container -->

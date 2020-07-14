@@ -1,0 +1,43 @@
+﻿@model List<Talep>
+@{
+    ViewBag.Title = "Talep";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+<div class="row" style="margin-left:110px">
+    <div class="tesla-carousel-items">
+        @Html.ActionLink("Yeni Talep Ekle", "TalepEkle", null, new { @class = "btn btn-success" })
+    </div>
+</div>
+
+<section class="panel">
+    <div class="panel-body">
+        <div class="adv-table editable-table " style="margin-top:50px">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>                                           
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Belge</th>
+                        <th>Açıklama</th>
+                        <th>Talep Tarihi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Adi</td>
+                            <td>@item.Soyadi</td>
+                            <td>@item.Belge</td>
+                            <td>@item.Yorum</td>
+                            <td>@item.TalepTarihi.ToShortDateString()</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</section>
+

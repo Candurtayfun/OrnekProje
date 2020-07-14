@@ -1,0 +1,34 @@
+﻿@model List<Degerlendirme>
+@{
+    ViewBag.Title = "Rapor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="panel">
+    <div class="panel-body">
+        <div class="adv-table editable-table " style="margin-top:50px">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Değerlendiren Kişinin Adı ve Soyadı</th>       
+                        <th>Değerlendirme Sonucu</th>
+                        <th>Değerlendirme Zamanı</th>                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                           <td>@item.Kullanici.Adi @item.Kullanici.Soyadi</td>
+                            <td>@item.DegerlendirmeSonucu</td> 
+                            <td>@item.DegerlendirmeZamani.ToShortDateString()</td>                          
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</section>
+
